@@ -84,6 +84,7 @@ contract FlashLoanBase is IFlashLoanSimpleReceiver {
             // Doesn't let execution reach the pool to save gas. 
             revert NotEnoughFundsToRepayFlashloan(balanceAfter, amount + premium);
         }
+        IERC20(asset).approve(address(POOL), amount + premium);
         ok = true;
     }
 
